@@ -1,163 +1,272 @@
-# Pixhawk Baseboard v1 Ports
+# MyboxesH743 Pro — распиновка и назначение разъёмов
 
-{% hint style="info" %}
-The Pixhawk Baseboard v1 has been replaced by the v2A & V2B. See the following change log for detail.&#x20;
-{% endhint %}
+Документация по внешним разъёмам полётного контроллера **MyboxesH743 Pro**.
 
-{% content-ref url="/pages/zjEp4wewp27jR1NCTCvX" %}
-[Baseboard Changelog](/autopilot/pixhawk-baseboards/baseboard-changelog.md)
-{% endcontent-ref %}
+> [!IMPORTANT]
+> Нумерация контактов приведена в соответствии с изображениями распиновки ниже.  
+> Перед подключением периферии убедитесь, что правильно определили **контакт 1** и ориентацию разъёма.
 
-![](/files/jhTDhBelpVY5XbaheAXL)
+<p align="center">
+  <img src="./images/myboxesh743-pro.png" alt="Полётный контроллер MyboxesH743 Pro" width="720">
+</p>
 
-{% hint style="info" %}
+## Расположение и нумерация разъёмов
 
-* I/O PWM OUT = MAIN OUT
-* FMU PWM OUT = AUX OUT
-* Refer to this diagram for location of pin1. All connectors are JST GH 1.25 mm Pitch unless noted otherwise.&#x20;
+<p align="center">
+  <img src="./images/connector-pinout-1.png" alt="Распиновка разъёмов MyboxesH743 Pro — схема 1" width="820">
+</p>
 
-![](/images/connector)
-{% endhint %}
+<p align="center">
+  <img src="./images/connector-pinout-2.png" alt="Распиновка разъёмов MyboxesH743 Pro — схема 2" width="820">
+</p>
 
-### **Power1 (Main) & Power2 Port (Backup)** (2.00mm Pitch CLIK-Mate)
+Файлы изображений должны находиться в репозитории по следующим путям:
 
-<table data-header-hidden data-search="false"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>Pin</strong></td><td><strong>Signal</strong></td><td><strong>Volt</strong></td></tr><tr><td>1(red)</td><td>VDD5V_BRICK1/2</td><td>+5V</td></tr><tr><td>2(black)</td><td>VDD5V_BRICK1/2</td><td>+5V</td></tr><tr><td>3(black)</td><td>SCL1/2</td><td>+3.3V</td></tr><tr><td>4(black)</td><td>SDA1/2</td><td>+3.3V</td></tr><tr><td>5(black)</td><td>GND</td><td>GND</td></tr><tr><td>6(black)</td><td>GND</td><td>GND</td></tr></tbody></table>
+```text
+images/
+├── myboxesh743-pro.png
+├── connector-pinout-1.png
+└── connector-pinout-2.png
+```
 
-### **Telem1, Telem2, Telem3 ports**
+## Общие обозначения
 
-<table data-header-hidden data-search="false"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>Pin</strong></td><td><strong>Signal</strong></td><td><strong>Volt</strong></td></tr><tr><td>1(red)</td><td>VCC</td><td>+5V</td></tr><tr><td>2(black)</td><td>TX7/5/2 (out)</td><td>+3.3V</td></tr><tr><td>3(black)</td><td>RX7/5/2 (in)</td><td>+3.3V</td></tr><tr><td>4(black)</td><td>CTS7/5/2 (in)</td><td>+3.3V</td></tr><tr><td>5(black)</td><td>RTS7/5/2 (out)</td><td>+3.3V</td></tr><tr><td>6(black)</td><td>GND</td><td>GND</td></tr></tbody></table>
+| Обозначение | Описание |
+|---|---|
+| `TX` | Передача данных из полётного контроллера |
+| `RX` | Приём данных полётным контроллером |
+| `CTS` | Вход аппаратного управления потоком UART |
+| `RTS` | Выход аппаратного управления потоком UART |
+| `SCL` | Тактовая линия шины I²C |
+| `SDA` | Линия данных шины I²C |
+| `CANH` | Высокая линия дифференциальной шины CAN |
+| `CANL` | Низкая линия дифференциальной шины CAN |
+| `GND` | Общий провод |
+| `VDD` | Напряжение питания внешнего устройства |
+| `ARSP` | Аналоговый вход датчика воздушной скорости |
+| `RSSI` | Аналоговый вход уровня принимаемого сигнала |
 
-### **GPS 1 Port**
+> [!NOTE]
+> Направления `TX`, `RX`, `CTS` и `RTS` указаны **относительно полётного контроллера**.  
+> Контакт `TX` контроллера подключается к `RX` внешнего устройства, а `RX` контроллера — к `TX` внешнего устройства.
 
-<table data-header-hidden data-search="false"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>Pin</strong></td><td><strong>Signal</strong></td><td><strong>Volt</strong></td></tr><tr><td>1(red)</td><td>VCC</td><td>+5V</td></tr><tr><td>2 black)</td><td>TX1(out)</td><td>+3.3V</td></tr><tr><td>3(black)</td><td>RX1(in)</td><td>+3.3V</td></tr><tr><td>4(black)</td><td>SCL1</td><td>+3.3V</td></tr><tr><td>5(black)</td><td>SDA1</td><td>+3.3V</td></tr><tr><td>6(black)</td><td>SAFETY_SWITCH</td><td>+3.3V</td></tr><tr><td>7(black)</td><td>SAFETY_SWITCH_LED</td><td>+3.3V</td></tr><tr><td>8(black)</td><td>VDD_3V3</td><td>+3.3V</td></tr><tr><td>9(black)</td><td>BUZZER-</td><td>0~5V</td></tr><tr><td>10(black)</td><td>GND</td><td>GND</td></tr></tbody></table>
+---
 
-### **GPS 2 Port**
+## Power1 — основное питание
 
-<table data-header-hidden data-search="false"><thead><tr><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>Pin</strong></td><td><strong>Signal</strong></td><td><strong>Volt</strong></td><td></td></tr><tr><td>1(red)</td><td>VCC</td><td>+5V</td><td></td></tr><tr><td>2 black)</td><td>TX8(out)</td><td>+3.3V</td><td></td></tr><tr><td>3(black)</td><td>RX8(in)</td><td>+3.3V</td><td></td></tr><tr><td>4(black)</td><td>SCL2</td><td>+3.3V</td><td></td></tr><tr><td>5(black)</td><td>SDA2</td><td>+3.3V</td><td></td></tr><tr><td>6(black)</td><td>GND</td><td>GND</td><td></td></tr></tbody></table>
+Разъём основного питания полётного контроллера. Поддерживает измерение напряжения и тока аккумулятора.
 
-### **CAN1, CAN2 ports**
+| Контакт | Сигнал | Тип | Назначение |
+|---:|---|---|---|
+| 1 | `GND` | Земля | Общий провод питания |
+| 2 | `GND` | Земля | Общий провод питания |
+| 3 | `Battery Voltage` | Аналоговый вход | Измерение напряжения аккумулятора |
+| 4 | `Battery Current` | Аналоговый вход | Измерение тока аккумулятора |
+| 5 | `+5V` | Питание | Основное питание контроллера |
+| 6 | `+5V` | Питание | Основное питание контроллера |
 
-| **Pin**  | **Signal** | **Volt** |
-| -------- | ---------- | -------- |
-| 1(red)   | VCC        | +5V      |
-| 2(black) | CANH1/2    | +3.3V    |
-| 3(black) | CANL1/2    | +3.3V    |
-| 4(black) | GND        | GND      |
+---
 
-### **Uart4 & I2C port**
+## Power2 — резервное питание
 
-<table data-header-hidden data-search="false"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>Pin</strong></td><td><strong>Signal</strong></td><td><strong>Volt</strong></td></tr><tr><td>1(red)</td><td>VCC</td><td>+5V</td></tr><tr><td>2(black)</td><td>TX4(out)</td><td>+3.3V</td></tr><tr><td>3(black)</td><td>RX4(in)</td><td>+3.3V</td></tr><tr><td>4(black)</td><td>SCL3</td><td>+3.3V</td></tr><tr><td>5(black)</td><td>SDA3</td><td>+3.3V</td></tr><tr><td>6(black)</td><td>NFC_GPIO</td><td>+3.3V</td></tr><tr><td>7(black)</td><td>GND</td><td>GND</td></tr></tbody></table>
+Разъём резервного питания. Может использоваться как второй независимый вход питания контроллера.
 
-### **SPI Port**
+| Контакт | Сигнал | Тип | Назначение |
+|---:|---|---|---|
+| 1 | `GND` | Земля | Общий провод питания |
+| 2 | `GND` | Земля | Общий провод питания |
+| 3 | `Battery Voltage` | Аналоговый вход | Измерение напряжения резервного источника |
+| 4 | `Battery Current` | Аналоговый вход | Измерение тока резервного источника |
+| 5 | `+5V` | Питание | Резервное питание контроллера |
+| 6 | `+5V` | Питание | Резервное питание контроллера |
 
-<table data-header-hidden data-search="false"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>Pin</strong></td><td><strong>Signal</strong></td><td><strong>Volt</strong></td></tr><tr><td>1(red)</td><td>VCC</td><td>+5V</td></tr><tr><td>2 (black)</td><td>SPI6_SCK</td><td>+3.3V</td></tr><tr><td>3(black)</td><td>SPI6_MISO</td><td>+3.3V</td></tr><tr><td>4(black)</td><td>SPI6_MOSI</td><td>+3.3V</td></tr><tr><td>5(black)</td><td>SPI6_CS1</td><td>+3.3V</td></tr><tr><td>6(black)</td><td>SPI6_CS2</td><td>+3.3V</td></tr><tr><td>7(black)</td><td>SPIX_SYNC</td><td>+3.3V</td></tr><tr><td>8(black)</td><td>SPI6_DRDY1</td><td>+3.3V</td></tr><tr><td>9(black)</td><td>SPI6_DRDY2</td><td>+3.3V</td></tr><tr><td>10(black)</td><td>SPI6_nRESET</td><td>+3.3V</td></tr><tr><td>11(black)</td><td>GND</td><td>GND</td></tr></tbody></table>
+---
 
-### **USB Port**
+## SERIAL1
 
-| **Pin**  | **Signal** | **Volt** |
-| -------- | ---------- | -------- |
-| 1(red)   | VBUS       | +5V      |
-| 2(black) | DM         | +3.3V    |
-| 3(black) | DP         | +3.3V    |
-| 4(black) | GND        | GND      |
+Полнофункциональный последовательный порт UART с аппаратным управлением потоком.
 
-### **I2C Port**
+| Контакт | Сигнал | Тип | Назначение |
+|---:|---|---|---|
+| 1 | `+5V` | Питание | Питание внешнего устройства |
+| 2 | `TX` | Цифровой выход | Передача данных из контроллера |
+| 3 | `RX` | Цифровой вход | Приём данных контроллером |
+| 4 | `CTS` | Цифровой вход | Разрешение передачи данных внешним устройством |
+| 5 | `RTS` | Цифровой выход | Управление передачей данных внешнего устройства |
+| 6 | `GND` | Земля | Общий провод |
 
-| **Pin**  | **Signal** | **Volt** |
-| -------- | ---------- | -------- |
-| 1(red)   | VCC        | +5V      |
-| 2(black) | SCL3       | +3.3V    |
-| 3(black) | SDA3       | +3.3V    |
-| 4(black) | GND        | GND      |
+---
 
-### **ETH Port**
+## SERIAL2
 
-| **Pin**  | **Signal** | **Volt** |
-| -------- | ---------- | -------- |
-| 1(red)   | RXN        | +3.3V    |
-| 2(black) | RXP        | +3.3V    |
-| 3(black) | TXN        | +3.3V    |
-| 4(black) | TXP        | +3.3V    |
+Полнофункциональный последовательный порт UART с аппаратным управлением потоком.
 
-### **AD\&IO Port**
+| Контакт | Сигнал | Тип | Назначение |
+|---:|---|---|---|
+| 1 | `+5V` | Питание | Питание внешнего устройства |
+| 2 | `TX` | Цифровой выход | Передача данных из контроллера |
+| 3 | `RX` | Цифровой вход | Приём данных контроллером |
+| 4 | `CTS` | Цифровой вход | Разрешение передачи данных внешним устройством |
+| 5 | `RTS` | Цифровой выход | Управление передачей данных внешнего устройства |
+| 6 | `GND` | Земля | Общий провод |
 
-| **Pin**  | **Signal**      | **Volt** |
-| -------- | --------------- | -------- |
-| 1(red)   | VCC             | +5V      |
-| 2(black) | FMU\_CAP1       | +3.3V    |
-| 3(black) | FMU\_BOOTLOADER | +3.3V    |
-| 4(black) | FMU\_RST\_REQ   | +3.3V    |
-| 5(black) | NARMED          | +3.3V    |
-| 6(black) | ADC1\_3V3       | +3.3V    |
-| 7(black) | ADC1\_6V6       | +6.6V    |
-| 8(black) | GND             | GND      |
+---
 
-### **DSM RC Port** (JST-ZH 1.5mm Pitch)
+## SERIAL5
 
-| **Pin**   | **Signal**         | **Volt** |
-| --------- | ------------------ | -------- |
-| 1(yellow) | VDD\_3V3\_SPEKTRUM | +3.3V    |
-| 2(black)  | GND                | GND      |
-| 3(gray)   | DSM/SPEKTRUM IN    | +3.3V    |
+Последовательный порт UART без аппаратного управления потоком.
 
-### **RC IN Port**
+| Контакт | Сигнал | Тип | Назначение |
+|---:|---|---|---|
+| 1 | `+5V` | Питание | Питание внешнего устройства |
+| 2 | `TX` | Цифровой выход | Передача данных из контроллера |
+| 3 | `RX` | Цифровой вход | Приём данных контроллером |
+| 4 | `GND` | Земля | Общий провод |
 
-| **Pin** | **Signal**   | **Volt** |
-| ------- | ------------ | -------- |
-| S       | SBUS/PPM in  | +3.3V    |
-| +       | VDD\_5V \_RC | +5V      |
-| -       | GND          | GND      |
+> [!NOTE]
+> Интерфейс `SERIAL5` также используется в разъёме `GPS1`.
 
-### **IO Debug Port** (JST-SH 1mm Pitch)
+---
 
-| **Pin**   | **Signal**       | **Volt** |
-| --------- | ---------------- | -------- |
-| 1(red)    | IO\_VDD\_3V3     | +3.3V    |
-| 2 black)  | IO\_USART1\_TX   | +3.3V    |
-| 3(black)  | NC               | --       |
-| 4(black)  | IO\_SWD\_IO      | +3.3V    |
-| 5(black)  | IO\_SWD\_CK      | +3.3V    |
-| 6(black)  | IO\_SWO          | +3.3V    |
-| 7(black)  | IO\_SPARE\_GPIO1 | +3.3V    |
-| 8(black)  | IO\_SPARE\_GPIO2 | +3.3V    |
-| 9(black)  | IO\_nRST         | +3.3V    |
-| 10(black) | GND              | GND      |
+## I2C2
 
-### **FMU Debug Port** (JST-SH 1mm Pitch)
+Разъём для подключения внешних датчиков и периферийных устройств по шине I²C.
 
-| **Pin**   | **Signal**           | **Volt** |
-| --------- | -------------------- | -------- |
-| 1(red)    | FMU\_VDD\_3V3        | +3.3V    |
-| 2 black)  | FMU\_USART3\_TX      | +3.3V    |
-| 3(black)  | FMU\_USART3\_RX      | +3.3V    |
-| 4(black)  | FMU\_SWD\_IO         | +3.3V    |
-| 5(black)  | FMU\_SWD\_CK         | +3.3V    |
-| 6(black)  | SPI6\_SCK\_EXTERNAL1 | +3.3V    |
-| 7(black)  | NFC\_GPIO            | +3.3V    |
-| 8(black)  | PH11                 | +3.3V    |
-| 9(black)  | FMU\_nRST            | +3.3V    |
-| 10(black) | GND                  | GND      |
+| Контакт | Сигнал | Тип | Назначение |
+|---:|---|---|---|
+| 1 | `+5V` | Питание | Питание внешнего устройства |
+| 2 | `SCL` | Цифровая линия | Тактовая линия I²C |
+| 3 | `SDA` | Цифровая линия | Линия данных I²C |
+| 4 | `GND` | Земля | Общий провод |
 
-### **RSSI Port**
+---
 
-| **Pin** | **Signal**         | **Volt** |
-| ------- | ------------------ | -------- |
-| S       | SBUS\_OUT/RSSI\_IN | +3.3V    |
-| +       | VDD\_SERVO         | 0\~36V   |
-| -       | GND                | GND      |
+## CAN1
 
-### **FMU PWM OUT  (AUX OUT)**
+Разъём первой шины CAN.
 
-| **Pin** | **Signal**  | **Volt** |
-| ------- | ----------- | -------- |
-| S       | FMU\_CH1\~8 | +3.3V    |
-| +       | VDD\_SERVO  | 0\~36V   |
-| -       | GND         | GND      |
+| Контакт | Сигнал | Тип | Назначение |
+|---:|---|---|---|
+| 1 | `+5V` | Питание | Питание внешнего CAN-устройства |
+| 2 | `CANH` | Дифференциальная линия | Высокая линия CAN |
+| 3 | `CANL` | Дифференциальная линия | Низкая линия CAN |
+| 4 | `GND` | Земля | Общий провод |
 
-### **I/O PWM OUT (MAIN OUT)**
+---
 
-| **Pin** | **Signal** | **Volt** |
-| ------- | ---------- | -------- |
-| S       | IO\_CH1\~8 | +3.3V    |
-| +       | VDD\_SERVO | 0\~36V   |
-| -       | GND        | GND      |
+## CAN2
+
+Разъём второй шины CAN.
+
+| Контакт | Сигнал | Тип | Назначение |
+|---:|---|---|---|
+| 1 | `+5V` | Питание | Питание внешнего CAN-устройства |
+| 2 | `CANH` | Дифференциальная линия | Высокая линия CAN |
+| 3 | `CANL` | Дифференциальная линия | Низкая линия CAN |
+| 4 | `GND` | Земля | Общий провод |
+
+> [!TIP]
+> На концах физической линии CAN обычно устанавливаются согласующие резисторы. Проверяйте наличие терминации в подключаемых устройствах перед добавлением внешнего резистора.
+
+---
+
+## ADC
+
+Разъём аналоговых входов.
+
+| Контакт | Сигнал | Тип | Назначение |
+|---:|---|---|---|
+| 1 | `+5V` | Питание | Питание внешнего аналогового датчика |
+| 2 | `ARSP` | Аналоговый вход | Вход датчика воздушной скорости; встроенный делитель напряжения `1:2` |
+| 3 | `RSSI` | Аналоговый вход | Измерение аналогового уровня RSSI |
+| 4 | `GND` | Земля | Общий провод |
+
+> [!WARNING]
+> Перед подачей сигнала на аналоговые входы проверьте допустимый диапазон входного напряжения в электрической спецификации контроллера. Наличие делителя `1:2` указано только для входа `ARSP`.
+
+---
+
+## GPS1 / SERIAL5
+
+Основной GPS-разъём. Объединяет последовательный порт `SERIAL5`, шину I²C, линии кнопки безопасности, светодиода и зуммера.
+
+| Контакт | Сигнал | Тип | Назначение |
+|---:|---|---|---|
+| 1 | `+5V` | Питание | Питание GPS-модуля |
+| 2 | `TX` | Цифровой выход | Передача данных из контроллера |
+| 3 | `RX` | Цифровой вход | Приём данных контроллером |
+| 4 | `SCL` | Цифровая линия | Тактовая линия I²C |
+| 5 | `SDA` | Цифровая линия | Линия данных I²C |
+| 6 | `SAFETY SWITCH` | Цифровой вход | Сигнал кнопки безопасности |
+| 7 | `SAFETY LED` | Цифровой выход | Управление светодиодом кнопки безопасности |
+| 8 | `+3.3V` | Питание | Питание низковольтной периферии |
+| 9 | `BUZZER` | Выход | Управление внешним зуммером |
+| 10 | `GND` | Земля | Общий провод |
+
+> [!IMPORTANT]
+> Линии UART разъёма `GPS1` относятся к интерфейсу `SERIAL5`. Учитывайте это при настройке последовательных портов в прошивке.
+
+---
+
+## GPS2 / SERIAL4
+
+Дополнительный GPS-разъём. Объединяет последовательный порт `SERIAL4` и линии I²C.
+
+| Контакт | Сигнал | Тип | Назначение |
+|---:|---|---|---|
+| 1 | `+5V` | Питание | Питание GPS-модуля |
+| 2 | `TX` | Цифровой выход | Передача данных из контроллера |
+| 3 | `RX` | Цифровой вход | Приём данных контроллером |
+| 4 | `SCL` | Цифровая линия | Тактовая линия I²C |
+| 5 | `SDA` | Цифровая линия | Линия данных I²C |
+| 6 | `GND` | Земля | Общий провод |
+
+---
+
+## VTX
+
+Разъём подключения аналогового видеопередатчика.
+
+| Контакт | Сигнал | Тип | Назначение |
+|---:|---|---|---|
+| 1 | `VDD` | Питание | Питание видеопередатчика; напрямую соединено с `VDD` разъёма `CAM` |
+| 2 | `Video OUT` | Аналоговый выход | Видеосигнал после прохождения через полётный контроллер |
+| 3 | `GND` | Земля | Общий провод |
+
+---
+
+## CAM
+
+Разъём подключения аналоговой камеры.
+
+| Контакт | Сигнал | Тип | Назначение |
+|---:|---|---|---|
+| 1 | `VDD` | Питание | Питание камеры; напрямую соединено с `VDD` разъёма `VTX` |
+| 2 | `Video IN` | Аналоговый вход | Вход видеосигнала от камеры |
+| 3 | `GND` | Земля | Общий провод |
+
+> [!WARNING]
+> Контакты `VDD` разъёмов `CAM` и `VTX` электрически соединены напрямую. Напряжение питания камеры и видеопередатчика должно быть совместимо с обоими устройствами.
+
+---
+
+## Подключение периферии
+
+Перед подключением нового устройства:
+
+1. Отключите питание полётного контроллера.
+2. Проверьте ориентацию разъёма и положение контакта 1.
+3. Сверьте напряжение питания внешнего устройства.
+4. Для UART соедините `TX` одного устройства с `RX` другого.
+5. Для CAN соединяйте `CANH` с `CANH`, а `CANL` с `CANL`.
+6. Убедитесь, что все устройства имеют общий `GND`.
+7. После подключения проверьте назначение интерфейса в настройках прошивки.
+
+## Лицензия и обратная связь
+
+При обнаружении ошибки в распиновке создайте Issue в репозитории и укажите:
+
+- название разъёма;
+- номер контакта;
+- ожидаемый сигнал;
+- версию аппаратной платы.
