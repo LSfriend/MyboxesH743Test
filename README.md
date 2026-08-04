@@ -16,7 +16,7 @@ The Pixhawk Baseboard v1 has been replaced by the v2A & V2B. See the following c
 * FMU PWM OUT = AUX OUT
 * Refer to this diagram for location of pin1. All connectors are JST GH 1.25 mm Pitch unless noted otherwise.&#x20;
 
-![](/files/MyTeWlJug4RGPlgIU1H6)
+![](/images/connector)
 {% endhint %}
 
 ### **Power1 (Main) & Power2 Port (Backup)** (2.00mm Pitch CLIK-Mate)
