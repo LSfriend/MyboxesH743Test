@@ -1,17 +1,12 @@
 # MyboxesH743 Pro — Pinout
 
 <p align="center">
-  <img src="./images/myboxesh743-pro.png" alt="MyboxesH743 Pro" width="600">
+  <img src="./images/myboxesh743-pro.png" alt="MyboxesH743 Pro">
 </p>
 
 ## Расположение разъёмов
-
 <p align="center">
-  <img src="./images/connector-pinout-1.png" alt="Распиновка разъёмов — сторона 1" width="760">
-</p>
-
-<p align="center">
-  <img src="./images/connector-pinout-2.png" alt="Распиновка разъёмов — сторона 2" width="760">
+  <img src="./images/connector-pinout-1.png" alt="Распиновка разъёмов — сторона 2" width="500">
 </p>
 
 > **Примечание:** нумерация контактов указана на изображениях выше. Направления `TX`, `RX`, `CTS` и `RTS` указаны относительно полётного контроллера. Логические сигналы — `3.3 В`, если не указано иное.
